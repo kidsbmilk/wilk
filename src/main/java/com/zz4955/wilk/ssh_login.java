@@ -15,7 +15,7 @@ public class ssh_login {
     public static void main(String[] args) {
         try {
             JSch jSch = new JSch();
-            final Session session = jSch.getSession("", "relay.xiaomi.com"); // 这个username不能乱填，要不然生成的二维码扫后没效果。
+            final Session session = jSch.getSession("zhangzhen5", "relay.xiaomi.com"); // 这个username不能乱填，要不然生成的二维码扫后没效果。
             session.setUserInfo(new MyUserInfo());
             session.connect();
 
