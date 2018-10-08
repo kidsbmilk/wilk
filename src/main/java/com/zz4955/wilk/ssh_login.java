@@ -31,12 +31,13 @@ public class ssh_login {
                 public Boolean call() throws Exception {
                     channel.connect();
 
-                    outputStream.write("\n".getBytes());
+                    outputStream.write("\n".getBytes()); // 这个应该输入\n\r才合适。
                     outputStream.flush();
 
                     String msg = null;
                     boolean b = true;
-                    while((msg = in.readLine())!=null){
+                    while((msg = in.readLine())!=null){ // 这个是读取一行，服务器那边显示：Your [EMAIL] password: ，这里是提示要输入用户密码，因为没有输入回车换行，所以这个版本是无法显示“Your [EMAIL] password:”的。
+                    // 使用InputStream的available可以显示“Your [EMAIL] password:”。从这个也可以知道如何交互式的输入密码与动态验证码：当服务器那边显示：Your [EMAIL] password: 时，就用OutputStream输入密码与动态验证码就可以了。 TODO.
                         if(msg.length() == 0) {
                             continue;
                         }
