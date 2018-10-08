@@ -9,7 +9,7 @@ public class sshnull_ex {
     public static void main(String[] args) {
         try {
             JSch jSch = new JSch();
-            Session session = jSch.getSession("", "relay.xiaomi.com");
+            Session session = jSch.getSession("", "relay.xiaomi.com"); // 这个username不能乱填，要不然生成的二维码扫后没效果。
 //            session.setPassword("");
             session.setUserInfo(new MyUserInfo());
 //            session.setConfig("StrictHostKeyChecking", "no");
